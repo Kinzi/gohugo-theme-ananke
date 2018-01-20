@@ -1,1 +1,30 @@
 /* Put your custom styles here and run `npm start` from the "src" directory on */
+.brand-link {
+   display: inline-flex;
+}
+#logo {
+   height: 50px;
+}
+
+.logo-sub {
+    margin-top: 12px;
+    margin-left: 4px;
+}
+
+.bg-hero {
+   background-image: linear-gradient(112deg, #3988fe 0%, #45a2ff 100%);
+}
+
+.twitter:hover {
+    fill: #2ce8b5;
+}
+
+.facebook, .twitter, .instagram, .youtube, .github, .linkedin {
+    fill: #efefef;
+}
+
+.keylogs-btn {
+   border: 1px solid #efefef;
+   border-radius: 25px;
+   padding: 8px 15px;
+}

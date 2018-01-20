@@ -5,9 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     {{/* NOTE: the Site's title, and if there is a page title, that is set too */}}
     <title>{{ block "title" . }}{{ .Site.Title }} {{ with .Params.Title }} | {{ . }}{{ end }}{{ end }}</title>
+
+    {{ if (isset .Params "meta_description") }}
+    <meta name="description" content="{{ .Params.meta_description }}" />
+    {{ else if (isset .Params "description") }}
+    <meta name="description" content="{{ .Params.description }}" />
+    {{ end }}
+
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
-
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     {{ .Hugo.Generator }}
     {{/* NOTE: For Production make sure you add `HUGO_ENV="production"` before your build command */}}
@@ -16,7 +22,7 @@
     {{ else }}
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     {{ end }}
-
+    <link rel="canonical" href="{{ .Permalink }}"/>
     <link href='{{ "dist/main.css" | absURL }}' rel='stylesheet' type="text/css" />
     {{ block "favicon" . }}
       {{ partial "site-favicon.html" . }}
