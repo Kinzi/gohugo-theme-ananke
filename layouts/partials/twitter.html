@@ -1,0 +1,26 @@
+{{ $featured_image := .Param "featured_image" | default "" }}
+{{ if $featured_image }}
+<!-- Twitter summary card with large image must be at least 280x150px -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image:src" content="{{ $featured_image }}"/>
+{{ else }}
+  <meta name="twitter:card" content="summary"/>
+{{ end }}
+<!-- Twitter Card data -->
+
+{{ if .Params.Title }}
+<meta name="twitter:title" content="{{.Params.Title }}"/>
+{{ else }}
+<meta name="twitter:title" content="{{ .Site.Title }}"/>
+{{ end }}
+
+{{ if (isset .Params "meta_description") }}
+<meta name="twitter:description" content="{{ .Params.meta_description }}"/>
+
+{{ else if (isset .Params "description") }}
+<meta name="description" content="{{ .Params.description }}" />
+<meta name="twitter:description" content="{{ .Params.description }}"/>
+
+{{ end }}
+
+<meta name="twitter:site" content="@keylogs_io"/>
