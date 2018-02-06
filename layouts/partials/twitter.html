@@ -1,5 +1,6 @@
 {{ $featured_image := .Param "featured_image" | default "" }}
 {{ if $featured_image }}
+{{ $featured_image := (trim $featured_image "/") | absURL }}
 <!-- Twitter summary card with large image must be at least 280x150px -->
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:image:src" content="{{ $featured_image }}"/>
